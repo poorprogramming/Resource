@@ -27,18 +27,21 @@ public class GameController : MonoBehaviour
 	public void UpdateResources ()
 	{
 		string txt = "";
-
+		
 		for (int i=0; i < resourcePrefabs.Count; i++)
 		{
 			float total = 0.0f;
 			float speed = 0.0f;
-
-			foreach (ResourceController rc in resourceControllers[i])
+			
+			if (resourceControllers[i].Count > 0)
 			{
-				total += rc.count;
-				if (rc.gaining) { speed += rc.rate; }
+				foreach (ResourceController rc in resourceControllers[i])
+				{
+					total += rc.count;
+					if (rc.gaining) { speed += rc.rate; }
+				}
+				txt += resourceControllers[i][0].resourceName + ": " + Mathf.FloorToInt(total) + " (" + speed.ToString("0.000") + "/s)\n";
 			}
-			txt += resourceControllers[i][0].resourceName + ": " + Mathf.FloorToInt(total) + " (" + speed.ToString("0.000") + "/s)\n";
 		}
 		resourceText.text = txt;
 	}
