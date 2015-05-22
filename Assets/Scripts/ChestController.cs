@@ -12,14 +12,14 @@ public class ChestController : MonoBehaviour
 	
 	
 	void OpenChest () {
-		if (!open && !animation.isPlaying) {
-			animation ["Default Take"].speed = 1.0f;
-			animation.Play ();
+		if (!open && !GetComponent<Animation>().isPlaying) {
+			GetComponent<Animation>() ["Default Take"].speed = 1.0f;
+			GetComponent<Animation>().Play ();
 			open = !open;
-		} else if (!animation.isPlaying) {
-			animation ["Default Take"].time = animation ["Default Take"].length;
-			animation ["Default Take"].speed = -1.0f;
-			animation.Play ();
+		} else if (!GetComponent<Animation>().isPlaying) {
+			GetComponent<Animation>() ["Default Take"].time = GetComponent<Animation>() ["Default Take"].length;
+			GetComponent<Animation>() ["Default Take"].speed = -1.0f;
+			GetComponent<Animation>().Play ();
 			open = !open;
 		}
 	}

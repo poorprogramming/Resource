@@ -9,6 +9,6 @@ public class TileScroller : MonoBehaviour
 	void Update() 
 	{
 		float offset = Time.time * scrollSpeed;
-		waterTile.renderer.material.SetTextureOffset("_MainTex", new Vector2(0, offset));
+		waterTile.GetComponent<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(0, offset));
 	}
 }
